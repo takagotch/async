@@ -2,6 +2,8 @@
 ---
 https://github.com/caolan/async
 
+http://caolan.github.io/async/
+
 ```js
 async.forEachOf(obj, (value, key, callback) => {
   fs.readFile(__dirname + value, "utf8", (err, data) => {
