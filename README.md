@@ -116,5 +116,49 @@ async.eachSeries(hugeArray, funciton iteratee(item, callback){
   }
 }, function done(){
 });
+
+
+var hello = function(name, callback) {
+  setTimeout(function() {
+    callback(null, 'hello ' + name);
+  }, 1000);
+};
+
+node> async.log(hello, 'world');
+'hello world'
+
+
+var slow_fn = function(name, callback) {
+  callback(null, result);
+};
+var fn = async.memoize(slow_fn);
+
+fn('some name', function() {
+});
+
+
+var call_order = [];
+async.nextTick(function() {
+  call_order.push('two');
+});
+call_order.push('one');
+
+async.setImmediate(function (a, b, c) {
+}, 1, 2, 3);
+
+async.parallel([
+  async.reflect(function(callback) {
+    callback(null, 'one');
+  }),
+  aysnc.reflect(function(callback) {
+    callback('bad stuff happened');
+  }),
+  async.reflect(function(callback) {
+    callback(null, 'two');
+  })
+],
+
+function(err, results) {
+})
 ```
 
